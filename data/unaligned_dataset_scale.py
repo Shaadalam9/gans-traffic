@@ -37,7 +37,7 @@ class UnalignedScaleDataset(BaseDataset):
 
     def __getitem__(self, index):
         A_path = self.A_paths[index % self.A_size]
-        index_A = index % self.A_size
+        index_A = index % self.A_size  # noqa: F841
         if self.opt.serial_batches:
             index_B = index % self.B_size
         else:
@@ -54,7 +54,7 @@ class UnalignedScaleDataset(BaseDataset):
         # get the triplet from A
         if self.opt.resize_mode == "scale_shortest":
             w, h = A_img.size
-            if w >= h: 
+            if w >= h:
                 scale = self.opt.loadSize / h
                 new_w = int(w * scale)
                 new_h = self.opt.loadSize
@@ -91,7 +91,6 @@ class UnalignedScaleDataset(BaseDataset):
 
         A_img = A_img[:, h_offset:h_offset + fineSizeH, w_offset:w_offset + fineSizeW]
 
-
         if self.opt.resize_mode == "scale_shortest":
             w, h = B_img.size
             if w >= h: 
@@ -102,7 +101,7 @@ class UnalignedScaleDataset(BaseDataset):
                 scale = self.opt.loadSize / w
                 new_w = self.opt.loadSize
                 new_h = int(h * scale)
-                
+
             B_img = B_img.resize((new_w, new_h), Image.BICUBIC)
         elif self.opt.resize_mode == "square":
             B_img = B_img.resize((self.opt.loadSize, self.opt.loadSize), Image.BICUBIC)
@@ -129,11 +128,11 @@ class UnalignedScaleDataset(BaseDataset):
         h_offset = random.randint(0, max(0, h - fineSizeH - 1))
 
         B_img = B_img[:, h_offset:h_offset + fineSizeH,
-             w_offset:w_offset + fineSizeW]
+             w_offset:w_offset + fineSizeW]  # noqa: E128
 
         #######
-        input_nc = self.opt.input_nc
-        output_nc = self.opt.output_nc
+        input_nc = self.opt.input_nc  # noqa: F841
+        output_nc = self.opt.output_nc  # noqa: F841
 
         # if input_nc == 1:  # RGB to gray
         #    tmp = A[0, ...] * 0.299 + A[1, ...] * 0.587 + A[2, ...] * 0.114
