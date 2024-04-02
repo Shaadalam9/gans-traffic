@@ -1,5 +1,7 @@
 #!/bin/bash
 
+python test_train.py
+
 python train.py \
     --dataroot data \
     --model unsup_single \
