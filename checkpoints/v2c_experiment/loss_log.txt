@@ -1,0 +1,9 @@
+================ Training Loss (Tue Apr  2 12:47:54 2024) ================
+================ Training Loss (Tue Apr  2 12:47:57 2024) ================
+================ Training Loss (Tue Apr  2 13:11:10 2024) ================
+(epoch: 1, iters: 100, time: 1.005) D_A: 0.138 G_A: 0.550 Cyc_A: 0.000 UnCyc_A: 2.248 Unsup_A: 0.766 Cont_A: 1.452 Idt_A: 0.000 D_B: 0.224 G_B: 0.550 Cyc_B: 0.000 UnCyc_B: 1.899 Unsup_B: 0.738 Cont_B: 1.722 Idt_B: 0.000 
+(epoch: 1, iters: 200, time: 1.011) D_A: 0.087 G_A: 0.753 Cyc_A: 0.000 UnCyc_A: 2.336 Unsup_A: 0.564 Cont_A: 1.495 Idt_A: 0.000 D_B: 0.128 G_B: 0.688 Cyc_B: 0.000 UnCyc_B: 1.654 Unsup_B: 0.565 Cont_B: 1.633 Idt_B: 0.000 
+(epoch: 1, iters: 300, time: 1.034) D_A: 0.257 G_A: 0.298 Cyc_A: 0.000 UnCyc_A: 2.050 Unsup_A: 0.571 Cont_A: 1.622 Idt_A: 0.000 D_B: 0.116 G_B: 0.455 Cyc_B: 0.000 UnCyc_B: 2.353 Unsup_B: 0.516 Cont_B: 1.646 Idt_B: 0.000 
+(epoch: 1, iters: 400, time: 1.045) D_A: 0.180 G_A: 0.724 Cyc_A: 0.000 UnCyc_A: 1.842 Unsup_A: 0.579 Cont_A: 1.414 Idt_A: 0.000 D_B: 0.158 G_B: 0.888 Cyc_B: 0.000 UnCyc_B: 1.456 Unsup_B: 0.578 Cont_B: 1.589 Idt_B: 0.000 
+(epoch: 1, iters: 500, time: 1.016) D_A: 0.212 G_A: 0.466 Cyc_A: 0.000 UnCyc_A: 1.748 Unsup_A: 0.838 Cont_A: 1.528 Idt_A: 0.000 D_B: 0.895 G_B: 0.987 Cyc_B: 0.000 UnCyc_B: 1.540 Unsup_B: 0.805 Cont_B: 1.586 Idt_B: 0.000 
+(epoch: 1, iters: 600, time: 1.063) D_A: 0.169 G_A: 1.279 Cyc_A: 0.000 UnCyc_A: 1.849 Unsup_A: 0.582 Cont_A: 1.456 Idt_A: 0.000 D_B: 0.118 G_B: 0.437 Cyc_B: 0.000 UnCyc_B: 1.704 Unsup_B: 0.615 Cont_B: 1.539 Idt_B: 0.000 
