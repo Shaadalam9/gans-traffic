@@ -17,7 +17,7 @@ class youtube_helper:
         self.resolution = None
         self.video_title = None
 
-    def download_video_with_resolution(self, video_id, resolutions=["360p"], output_path="."):
+    def download_video_with_resolution(self, video_id, resolutions=["720p","360p"], output_path="."):
         try:
             youtube_url = f'https://www.youtube.com/watch?v={video_id}'
             print(youtube_url)
