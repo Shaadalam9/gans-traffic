@@ -29,7 +29,7 @@ pip install -r requirements.txt
 
 Traffic data is available at [OneDrive Link](https://tuenl-my.sharepoint.com/personal/p_bazilinskyy_tue_nl/_layouts/15/onedrive.aspx?FolderCTID=0x0120003C1F03DD1FAC5542937CFDF71E074F8E&id=%2Fpersonal%2Fp%5Fbazilinskyy%5Ftue%5Fnl%2FDocuments%2FProjects%2FTUe%20GANS%2FVideo%2Ftrain).
 
-Organize the dataset in such a way that it contains train/val set and source domain A/ target domain B hierarchically. For Viper-to-CityScapes experiments, A/B will be the frames from Viper/CityScapes while for Video-to-Label experiments, A/B will be the frames/label maps in Viper. 
+Organize the dataset in such a way that it contains train/val set and source domain A/ target domain B hierarchically.
 ```
 path/to/data/
 |-- train
