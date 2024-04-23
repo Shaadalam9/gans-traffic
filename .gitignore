@@ -9,6 +9,4 @@ data/val
 util/__pycache__
 data/test
 results
-output_video_fake_A.mp4
-output_video_fake_B.mp4
-checkpoints/v2c_experiment/v2c_experiment_web
+compress_video.py

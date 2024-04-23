@@ -1,49 +1,76 @@
 import os
-from pytube import YouTube
-from moviepy.video.io.VideoFileClip import VideoFileClip
-from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-from moviepy.editor import VideoFileClip
 import cv2
-import params as params
-from collections import defaultdict
-import shutil
-import numpy as np
-import pandas as pd
 
 
-class youtube_helper:
+class process_helper():
 
     def __init__(self):
-        self.resolution = None
-        self.video_title = None
+        pass
 
-    def download_video_with_resolution(self, video_id, resolutions=["720p","360p"], output_path="."):
-        try:
-            youtube_url = f'https://www.youtube.com/watch?v={video_id}'
-            print(youtube_url)
-            youtube_object = YouTube(youtube_url)
-            for resolution in resolutions:
-                video_streams = youtube_object.streams.filter(res=f"{resolution}").all()
-                if video_streams:
-                    self.resolution = resolution
-                    print(f"Got the video in {resolution}")
-                    break
+    # Function to extract frames from a video
+    def extract_frames(video_path, _time_, train_output_folder, val_output_folder, train_percentage=0.8):
+        # Create train and validation output folders if they don't exist
+        if not os.path.exists(train_output_folder):
+            os.makedirs(train_output_folder)
+        if not os.path.exists(val_output_folder):
+            os.makedirs(val_output_folder)
 
-            if not video_streams:
-                print(f"No {resolution} resolution available for '{youtube_object.title}'.")
-                return None
+        # Open the video file
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            print("Error: Unable to open video file.")
+            return
 
-            selected_stream = video_streams[0]
+        # Get frame rate and total number of frames
+        fps = cap.get(cv2.CAP_PROP_FPS)  # Pass this fps for future
+        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-            video_file_path = f"{output_path}/{video_id}.mp4"
-            print("Youtube video download in progress...")
-            # Comment the below line to automatically download with video in "video" folder
-            selected_stream.download(output_path, filename=f"{video_id}.mp4")
+        # Calculate total time of the video
+        total_time = total_frames / fps
 
-            print(f"Download of '{youtube_object.title}' in {resolution} completed successfully.")
-            self.video_title = youtube_object.title
-            return video_file_path, video_id, resolution
+        # Calculate the number of frames for the first hour of footage
+        num_frames_time = int(fps * _time_ * 60) if total_time >= (_time_ * 60) else total_frames
 
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return None
+        # Iterate through the video and extract frames
+        for i in range(num_frames_time):
+            ret, frame = cap.read()
+            if not ret:
+                break
+
+            # Decide whether to save in train or validation folder
+            if i % int(1/(1-train_percentage)) == 0:
+                output_folder = val_output_folder
+            else:
+                output_folder = train_output_folder
+
+            # Save frame as an image
+            frame_filename = os.path.join(output_folder, f"frame_{i}.jpg")
+            cv2.imwrite(frame_filename, frame)
+
+        # Release the video capture object
+        cap.release()
+        return fps
+
+    def images_to_video(image_folder, output_video_path, ends_with, fps=60):
+        # Get the list of image files in the folder
+        image_files = [f for f in os.listdir(image_folder) if f.startswith("frame_") and f.endswith(ends_with)]
+
+        # Ensure the list is sorted by frame number
+        image_files.sort(key=lambda x: int(x.split('_')[1]))
+
+        # Get the first image to determine dimensions
+        first_image = cv2.imread(os.path.join(image_folder, image_files[0]))
+        height, width, _ = first_image.shape
+
+        # Define the video codec and create VideoWriter object
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
+
+        # Write each image to the video
+        for image_file in image_files:
+            image_path = os.path.join(image_folder, image_file)
+            frame = cv2.imread(image_path)
+            out.write(frame)
+
+        # Release the VideoWriter object
+        out.release()
