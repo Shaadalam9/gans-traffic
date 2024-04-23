@@ -62,7 +62,7 @@ class UnalignedScaleDataset(BaseDataset):
                 scale = self.opt.loadSize / w
                 new_w = self.opt.loadSize
                 new_h = int(h * scale)
-                
+
             A_img = A_img.resize((new_w, new_h), Image.BICUBIC)
         elif self.opt.resize_mode == "square":
             A_img = A_img.resize((self.opt.loadSize, self.opt.loadSize), Image.BICUBIC)

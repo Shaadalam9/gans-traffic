@@ -28,9 +28,11 @@ class CycleGANModel(BaseModel):
         # Code (paper): G_A (G), G_B (F), D_A (D_Y), D_B (D_X)
 
         self.netG_A = networks.define_G(opt.input_nc, opt.output_nc,
-                                        opt.ngf, opt.which_model_netG, opt.norm, not opt.no_dropout, opt.init_type, self.gpu_ids)
+                                        opt.ngf, opt.which_model_netG, opt.norm,
+                                        not opt.no_dropout, opt.init_type, self.gpu_ids)
         self.netG_B = networks.define_G(opt.output_nc, opt.input_nc,
-                                        opt.ngf, opt.which_model_netG, opt.norm, not opt.no_dropout, opt.init_type, self.gpu_ids)
+                                        opt.ngf, opt.which_model_netG, opt.norm,
+                                        not opt.no_dropout, opt.init_type, self.gpu_ids)
 
         if self.isTrain:
             use_sigmoid = opt.no_lsgan
@@ -212,8 +214,8 @@ class CycleGANModel(BaseModel):
         real_B = util.tensor2im(self.input_B)
         fake_A = util.tensor2im(self.fake_A)
         # rec_B = util.tensor2im(self.rec_B)
-        ret_visuals = OrderedDict([('real_A', real_A), ('fake_B', fake_B), #('rec_A', rec_A),
-                                   ('real_B', real_B), ('fake_A', fake_A), #('rec_B', rec_B)
+        ret_visuals = OrderedDict([('real_A', real_A), ('fake_B', fake_B),  # ('rec_A', rec_A),
+                                   ('real_B', real_B), ('fake_A', fake_A),  # ('rec_B', rec_B)
                                    ])
         if self.opt.isTrain and self.opt.identity > 0.0:
             ret_visuals['idt_A'] = util.tensor2im(self.idt_A)

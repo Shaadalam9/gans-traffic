@@ -147,7 +147,9 @@ def define_D(input_nc, ndf, which_model_netD,
     init_weights(netD, init_type=init_type)
     return netD
 
-def define_FusionNet(input_nc, output_nc, ngf, which_model_FusionNet, norm='instance', use_dropout=False, init_type='normal', gpu_ids=[]):
+
+def define_FusionNet(input_nc, output_nc, ngf, which_model_FusionNet, norm='instance',
+                     use_dropout=False, init_type='normal', gpu_ids=[]):
     FusionNet = None
     use_gpu = len(gpu_ids) > 0
     norm_layer = get_norm_layer(norm_type=norm)
@@ -156,14 +158,16 @@ def define_FusionNet(input_nc, output_nc, ngf, which_model_FusionNet, norm='inst
         assert(torch.cuda.is_available())
 
     if which_model_FusionNet == 'default':
-        FusionNet = FusionNetGenerator(input_nc, output_nc, ngf, norm_layer=norm_layer, use_dropout=use_dropout, n_blocks=9, gpu_ids=gpu_ids)
+        FusionNet = FusionNetGenerator(input_nc, output_nc, ngf, norm_layer=norm_layer,
+                                       use_dropout=use_dropout, n_blocks=9, gpu_ids=gpu_ids)
     else:
         raise NotImplementedError('Generator model name [%s] is not recognized' % which_model_FusionNet)
     if len(gpu_ids) > 0:
         FusionNet.cuda(gpu_ids[0])
     init_weights(FusionNet, init_type=init_type)
     return FusionNet
-    
+
+
 def init_net(net, init_type='normal', gpu_ids=[]):
     if len(gpu_ids) > 0:
         assert(torch.cuda.is_available())
@@ -180,10 +184,11 @@ def print_network(net):
     print(net)
     print('Total number of parameters: %d' % num_params)
 
+
 def define_C(output_nc, ndf, init_type='normal', gpu_ids=[]):
-    #if output_nc == 3:
+    # if output_nc == 3:
     #    netC = get_model('DTN', num_cls=10)
-    #else:
+    # else:
     #    Exception('classifier only implemented for 32x32x3 images')
     netC = Classifier(output_nc, ndf)
     return init_net(netC, init_type, gpu_ids)
@@ -232,7 +237,8 @@ class GANLoss(nn.Module):
     def __call__(self, input, target_is_real):
         target_tensor = self.get_target_tensor(input, target_is_real)
         return self.loss(input, target_tensor)
-        
+
+
 class FusionNetGenerator(nn.Module):
     def __init__(self, input_nc, output_nc, nff=64, norm_layer=nn.BatchNorm2d, use_dropout=False, n_blocks=6, gpu_ids=[], padding_type='reflect'):
         assert(n_blocks >= 0)
@@ -248,18 +254,15 @@ class FusionNetGenerator(nn.Module):
 
         model = [nn.ReflectionPad2d(3),
                  nn.Conv2d(input_nc, nff, kernel_size=7, padding=0, bias=use_bias),
-                 norm_layer(nff),
-                 nn.ReLU(True)]
+                 norm_layer(nff), nn.ReLU(True)]
 
         model += [nn.ReflectionPad2d(3),
                   nn.Conv2d(nff, nff, kernel_size=7, padding=0, bias=use_bias),
-                  norm_layer(nff),
-                  nn.ReLU(True)]
+                  norm_layer(nff), nn.ReLU(True)]
 
         model += [nn.ReflectionPad2d(3),
-                 nn.Conv2d(nff, output_nc, kernel_size=7, padding=0, bias=use_bias),
-                 norm_layer(nff),
-                 nn.Sigmoid()]
+                  nn.Conv2d(nff, output_nc, kernel_size=7, padding=0, bias=use_bias),
+                  norm_layer(nff), nn.Sigmoid()]
 
         self.model = nn.Sequential(*model)
 
@@ -370,14 +373,16 @@ class ResnetBlock(nn.Module):
 # PredictionNViews(input_nc, output_nc, 6, ngf, norm_layer=norm_layer, use_dropout=use_dropout)
 # ---------------------------------------------------------------------------------------------------
 
+
 class PredictionNViews(nn.Module):
-    def __init__(self, input_nc, output_nc,num_downs,  ngf=32,  norm_layer=nn.BatchNorm2d, use_dropout=False, n_blocks=6):
+    def __init__(self, input_nc, output_nc, num_downs,  ngf=32, 
+                 norm_layer=nn.BatchNorm2d, use_dropout=False, n_blocks=6):
         assert(n_blocks >= 0)
         super(PredictionNViews, self).__init__()
         self.input_nc = input_nc
         self.output_nc = output_nc
         self.ngf = ngf
-        #self.gpu_ids = gpu_ids
+        # self.gpu_ids = gpu_ids
 
         if type(norm_layer) == functools.partial:
             use_bias = norm_layer.func == nn.InstanceNorm2d
@@ -564,6 +569,7 @@ class NLayerDiscriminator(nn.Module):
         else:
             return self.model(input)
 
+
 class PixelDiscriminator(nn.Module):
     def __init__(self, input_nc, ndf=64, norm_layer=nn.BatchNorm2d, use_sigmoid=False, gpu_ids=[]):
         super(PixelDiscriminator, self).__init__()
@@ -572,7 +578,7 @@ class PixelDiscriminator(nn.Module):
             use_bias = norm_layer.func == nn.InstanceNorm2d
         else:
             use_bias = norm_layer == nn.InstanceNorm2d
-            
+
         self.net = [
             nn.Conv2d(input_nc, ndf, kernel_size=1, stride=1, padding=0),
             nn.LeakyReLU(0.2, True),
@@ -591,6 +597,7 @@ class PixelDiscriminator(nn.Module):
             return nn.parallel.data_parallel(self.net, input, self.gpu_ids)
         else:
             return self.net(input)
+
 
 class Classifier(nn.Module):
     def __init__(self, input_nc, ndf, norm_layer=nn.BatchNorm2d):
@@ -614,17 +621,16 @@ class Classifier(nn.Module):
                 nn.LeakyReLU(0.2, True)
             ]
         self.before_linear = nn.Sequential(*sequence)
-        
+
         sequence = [
             nn.Linear(ndf * nf_mult, 1024),
             nn.Linear(1024, 10)
         ]
 
         self.after_linear = nn.Sequential(*sequence)
-    
+
     def forward(self, x):
         bs = x.size(0)
         out = self.after_linear(self.before_linear(x).view(bs, -1))
         return out
- #       return nn.functional.log_softmax(out, dim=1)
-
+    # return nn.functional.log_softmax(out, dim=1)

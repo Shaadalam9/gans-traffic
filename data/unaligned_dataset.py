@@ -6,6 +6,7 @@ from PIL import Image
 import PIL
 import random
 
+
 class UnalignedDataset(BaseDataset):
     def initialize(self, opt):
         self.opt = opt
@@ -24,7 +25,7 @@ class UnalignedDataset(BaseDataset):
 
     def __getitem__(self, index):
         A_path = self.A_paths[index % self.A_size]
-        index_A = index % self.A_size
+        index_A = index % self.A_size  # noqa:F841
         if self.opt.serial_batches:
             index_B = index % self.B_size
         else:

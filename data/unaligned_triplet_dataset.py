@@ -29,7 +29,7 @@ class UnalignedTripletDataset(BaseDataset):
 
     def __getitem__(self, index):
         A_path = self.A_paths[index % self.A_size]
-        index_A = index % self.A_size
+        index_A = index % self.A_size  # noqa:F841
         if self.opt.serial_batches:
             index_B = index % self.B_size
         else:
@@ -54,15 +54,15 @@ class UnalignedTripletDataset(BaseDataset):
         h_offset = random.randint(0, max(0, h - self.opt.fineSize - 1))
 
         A0 = A_img[:, h_offset:h_offset + self.opt.fineSize,
-             w_offset:w_offset + self.opt.fineSize]
+                   w_offset:w_offset + self.opt.fineSize]
 
         A1 = A_img[:, h_offset:h_offset + self.opt.fineSize,
-             w + w_offset:w + w_offset + self.opt.fineSize]
+                   w + w_offset:w + w_offset + self.opt.fineSize]
 
         A2 = A_img[:, h_offset:h_offset + self.opt.fineSize,
-             2 * w + w_offset:2 * w + w_offset + self.opt.fineSize]
+                   2 * w + w_offset:2 * w + w_offset + self.opt.fineSize]
 
-        ## -- get the triplet from B
+        # -- get the triplet from B
         B_img = B_img.resize((self.opt.loadSize * 3, self.opt.loadSize), Image.BICUBIC)
         B_img = self.transform(B_img)
 
@@ -73,17 +73,17 @@ class UnalignedTripletDataset(BaseDataset):
         h_offset = random.randint(0, max(0, h - self.opt.fineSize - 1))
 
         B0 = B_img[:, h_offset:h_offset + self.opt.fineSize,
-             w_offset:w_offset + self.opt.fineSize]
+                   w_offset:w_offset + self.opt.fineSize]
 
         B1 = B_img[:, h_offset:h_offset + self.opt.fineSize,
-             w + w_offset:w + w_offset + self.opt.fineSize]
+                   w + w_offset:w + w_offset + self.opt.fineSize]
 
         B2 = B_img[:, h_offset:h_offset + self.opt.fineSize,
-             2 * w + w_offset:2 * w + w_offset + self.opt.fineSize]
+                   2 * w + w_offset:2 * w + w_offset + self.opt.fineSize]
 
         #######
-        input_nc = self.opt.input_nc
-        output_nc = self.opt.output_nc
+        input_nc = self.opt.input_nc  # noqa:F841
+        output_nc = self.opt.output_nc  # noqa:F841
 
         # if input_nc == 1:  # RGB to gray
         #    tmp = A[0, ...] * 0.299 + A[1, ...] * 0.587 + A[2, ...] * 0.114
