@@ -2,7 +2,6 @@ __pycache__
 .saved_models
 .DS_Store
 saved_models
-video
 data/__pycache__
 data/train
 data/val

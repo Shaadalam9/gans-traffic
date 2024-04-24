@@ -4,7 +4,7 @@ gen_images = ['python', 'run.py']
 
 train_command = [
     'python', 'train.py',
-    '--dataroot', 'path/to/data/',
+    '--dataroot', 'data',
     '--model', 'unsup_single',
     '--dataset_mode', 'unaligned_scale',
     '--name', 'v2c_experiment',
@@ -33,7 +33,7 @@ train_command = [
 
 test_command = [
     'python', 'test.py',
-    '--dataroot', 'path/to/data/',
+    '--dataroot', 'data',
     '--model', 'unsup_single',
     '--dataset_mode', 'unaligned_scale',
     '--name', 'v2c_experiment',

@@ -8,6 +8,7 @@ from util import html
 import tqdm
 import multiprocessing
 
+
 def main():
     opt = TestOptions().parse()
     opt.nThreads = 1   # test code only supports nThreads = 1
@@ -38,6 +39,7 @@ def main():
         visualizer.save_images(webpage, visuals, img_path)
 
     webpage.save()
+
 
 if __name__ == '__main__':
     multiprocessing.freeze_support()
