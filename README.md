@@ -75,30 +75,30 @@ Below are the variables and their values used for the training process:
 
 | Parameter               | Value               | Description                                                                            |
 |-------------------------|---------------------|----------------------------------------------------------------------------------------|
-| `--model`               | `unsup_single`     | Specifies the model type used in training.                                            |
-| `--dataset_mode`        | `unaligned_scale`  | Indicates the dataset mode used.                                                      |
-| `--name`                | `v2c_experiment`  | Name of the experiment, used for saving models and logs.                              |
-| `--loadSizeW`           | `542`              | Input image width after resizing.                                                     |
-| `--loadSizeH`           | `286`              | Input image height after resizing.                                                    |
-| `--resize_mode`         | `rectangle`        | Mode used for resizing input images.                                                  |
-| `--fineSizeW`           | `512`              | Final width of the cropped/resized image.                                             |
-| `--fineSizeH`           | `256`              | Final height of the cropped/resized image.                                            |
-| `--crop_mode`           | `rectangle`        | Crop mode for images.                                                                 |
-| `--which_model_netG`    | `resnet_6blocks`   | Generator architecture used in the model.                                             |
-| `--no_dropout`          | -                  | Disables dropout in the model.                                                        |
-| `--pool_size`           | `0`                | Sets the image buffer size for discriminator updates.                                  |
-| `--lambda_spa_unsup_A`  | `10`               | Weight for unsupervised spatial loss in domain A.                                      |
-| `--lambda_spa_unsup_B`  | `10`               | Weight for unsupervised spatial loss in domain B.                                      |
-| `--lambda_unsup_cycle_A`| `10`               | Weight for unsupervised recycle loss in domain A.                                      |
-| `--lambda_unsup_cycle_B`| `10`               | Weight for unsupervised recycle loss in domain B.                                      |
-| `--lambda_cycle_A`      | `0`                | Weight for supervised cycle loss in domain A (not used in this configuration).         |
-| `--lambda_cycle_B`      | `0`                | Weight for supervised cycle loss in domain B (not used in this configuration).         |
-| `--lambda_content_A`    | `1`                | Weight for content loss in domain A.                                                  |
-| `--lambda_content_B`    | `1`                | Weight for content loss in domain B.                                                  |
-| `--batchSize`           | `1`                | Batch size used for training.                                                         |
-| `--noise_level`         | `0.001`            | Noise level added to inputs for regularization.                                       |
-| `--niter_decay`         | `0`                | Number of epochs for linear learning rate decay.                                       |
-| `--niter`               | `1`                | Number of epochs at the initial learning rate.                                         |
+| `model`               | `unsup_single`     | Specifies the model type used in training.                                            |
+| `dataset_mode`        | `unaligned_scale`  | Indicates the dataset mode used.                                                      |
+| `name`                | `v2c_experiment`  | Name of the experiment, used for saving models and logs.                              |
+| `loadSizeW`           | `542`              | Input image width after resizing.                                                     |
+| `loadSizeH`           | `286`              | Input image height after resizing.                                                    |
+| `resize_mode`         | `rectangle`        | Mode used for resizing input images.                                                  |
+| `fineSizeW`           | `512`              | Final width of the cropped/resized image.                                             |
+| `fineSizeH`           | `256`              | Final height of the cropped/resized image.                                            |
+| `crop_mode`           | `rectangle`        | Crop mode for images.                                                                 |
+| `which_model_netG`    | `resnet_6blocks`   | Generator architecture used in the model.                                             |
+| `no_dropout`          | -                  | Disables dropout in the model.                                                        |
+| `pool_size`           | `0`                | Sets the image buffer size for discriminator updates.                                  |
+| `lambda_spa_unsup_A`  | `10`               | Weight for unsupervised spatial loss in domain A.                                      |
+| `lambda_spa_unsup_B`  | `10`               | Weight for unsupervised spatial loss in domain B.                                      |
+| `lambda_unsup_cycle_A`| `10`               | Weight for unsupervised recycle loss in domain A.                                      |
+| `lambda_unsup_cycle_B`| `10`               | Weight for unsupervised recycle loss in domain B.                                      |
+| `lambda_cycle_A`      | `0`                | Weight for supervised cycle loss in domain A (not used in this configuration).         |
+| `lambda_cycle_B`      | `0`                | Weight for supervised cycle loss in domain B (not used in this configuration).         |
+| `lambda_content_A`    | `1`                | Weight for content loss in domain A.                                                  |
+| `lambda_content_B`    | `1`                | Weight for content loss in domain B.                                                  |
+| `batchSize`           | `1`                | Batch size used for training.                                                         |
+| `noise_level`         | `0.001`            | Noise level added to inputs for regularization.                                       |
+| `niter_decay`         | `0`                | Number of epochs for linear learning rate decay.                                       |
+| `niter`               | `1`                | Number of epochs at the initial learning rate.                                         |
 
 ## Day-to-Night Translation Example
 
