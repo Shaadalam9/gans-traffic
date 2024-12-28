@@ -1,11 +1,23 @@
-__pycache__
-.saved_models
+# Python cache files
+__pycache__/
+data/__pycache__/
+util/__pycache__/
+
+# Saved models and checkpoints
+saved_models/
+.saved_models/
+checkpoints/
+
+# Dataset folders
+data/train/
+data/val/
+data/test/
+
+# Results and generated files
+results/
+
+# Operating system specific files
 .DS_Store
-saved_models
-data/__pycache__
-data/train
-data/val
-util/__pycache__
-data/test
-results
+
+# Miscellaneous
 compress_video.py

@@ -62,8 +62,6 @@ python3 main.py
 
 **Data Preparation**
 
-Traffic data is available at [OneDrive Link](https://tuenl-my.sharepoint.com/personal/p_bazilinskyy_tue_nl/_layouts/15/onedrive.aspx?FolderCTID=0x0120003C1F03DD1FAC5542937CFDF71E074F8E&id=%2Fpersonal%2Fp%5Fbazilinskyy%5Ftue%5Fnl%2FDocuments%2FProjects%2FTUe%20GANS).
-
 Organize the videos in such a way that it contains train/val set and source domain A/ target domain B hierarchically.
 ```
 |-- video
@@ -105,12 +103,12 @@ Below are the variables and their values used for the training process:
 ## Day-to-Night Translation Example
 
 Below is an example image showcasing the translation of traffic scenes from day to night in Gangnam Street, Korea. This demonstrates the model's ability to learn temporal and semantic consistency in unpaired video-to-video translation tasks.
-![Overall](ReadmeFiles/diagram-20240423_1.png)
+![Overall](ReadmeFiles/diagram.png)
 
 ## Loss curve
 
 
-[![Loss Curve](ReadmeFiles/plot.png)](https://htmlpreview.github.io/?https://github.com/Shaadalam9/gans-traffic/blob/main/ReadmeFiles/plot.png.html)
+[![Loss Curve](ReadmeFiles/plot.png)](https://htmlpreview.github.io/?https://github.com/Shaadalam9/gans-traffic/blob/main/ReadmeFiles/plot.html)
 - **D_A**: Discriminator loss for domain A.
 - **G_A**: Generator loss for domain A.
 - **Cyc_A**: Cycle consistency loss for domain A, ensuring that an image translated to domain B and back results in the original image.
@@ -139,4 +137,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Acknowledgment**
 
-Code borrowed from [Unsup-Recycle-GAN](https://github.com/wangkaihong/Unsup_Recycle_GAN), and [ReReVST](https://github.com/daooshee/ReReVST-Code/).
+The code for this repository is inspired from
+Wang, K., Akash, K., & Misu, T. (2022, June). Learning temporally and semantically consistent unpaired video-to-video translation through pseudo-supervision from synthetic optical flow. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 36, No. 3, pp. 2477-2486).  DOI: [10.1609/aaai.v36i3.20148](https://doi.org/10.1609/aaai.v36i3.20148)

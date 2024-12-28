@@ -1,5 +1,5 @@
 {
-  "data": "data",
+  "data": "checkpoints",
   "transformation": "day_to_night",
   "plotly_template": "plotly_white"
 }
