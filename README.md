@@ -7,7 +7,7 @@ Traffic simulations are crucial for testing systems and human behaviour in trans
 The code is open-source and free to use. It is aimed for, but not limited to, academic research. We welcome forking of this repository, pull requests, and any contributions in the spirit of open science and open-source code 😍😄 For inquiries about collaboration, you may contact Md Shadab Alam (md_shadab_alam@outlook.com) or Pavlo Bazilinskyy (pavlo.bazilinskyy@gmail.com).
 
 ## Citation
-If you use the coupled sim for academic work please cite the following paper:
+If you use the traffic-pipeline for academic work please cite the following paper:
 
 > Alam, M.S., Martens, M.H., & Bazilinskyy, P. (2025). Generating Realistic Traffic Scenarios: A Deep Learning Approach Using Generative Adversarial Networks (GANs). International Conference on Human Interaction & Emerging Technologies: Artificial Intelligence & Future Applications (IHIET-AI). Malaga, Spain.
 
