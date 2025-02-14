@@ -69,6 +69,12 @@ Organize the videos in such a way that it contains train/val set and source doma
 |   `-- train
 ```
 
+##
+Configuration of the project needs to be defined in gans-traffic/config. Please use the default.config file for the required structure of the file. If no custom config file is provided, default.config is used. The config file has the following parameters:
+- **`checkpoints`**: Specifies the location of the video files.
+- **`plotly_template`**: Template used to style graphs in the analysis (e.g., `plotly_white`, `plotly_dark`).
+
+
 ## Training Configuration
 
 Below are the variables and their values used for the training process:

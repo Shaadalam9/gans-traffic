@@ -136,10 +136,10 @@ def generate_plot():
         ))
 
     fig.update_layout(
-        xaxis={'title': {'text': "Iterations", 'font': {'size': 28}}, 'tickfont': {'size': 24}},
-        yaxis={'title': {'text': "Values", 'font': {'size': 28}}, 'tickfont': {'size': 24}, 'range': [-5, 5]},
+        xaxis={'title': {'text': "Iterations", 'font': {'size': 38}}, 'tickfont': {'size': 30}},
+        yaxis={'title': {'text': "Values", 'font': {'size': 38}}, 'tickfont': {'size': 30}, 'range': [-5, 5]},
         legend={
-            'font': {'size': 18}, 'orientation': 'h', 'x': 0.65, 'y': 0.1, 'xanchor': 'center', 'yanchor': 'top'
+            'font': {'size': 22}, 'orientation': 'h', 'x': 0.55, 'y': 0.1, 'xanchor': 'center', 'yanchor': 'top'
         },
         template=plotly_template,
     )

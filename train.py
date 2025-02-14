@@ -3,9 +3,6 @@ from options.train_options import TrainOptions
 from data.data_loader import CreateDataLoader
 from models.models import create_model
 from util.visualizer import Visualizer
-import numpy as np
-import random
-import torch
 
 if __name__ == '__main__':
     opt = TrainOptions().parse()
