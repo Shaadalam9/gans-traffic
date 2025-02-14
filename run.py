@@ -27,5 +27,5 @@ video_files = [f for f in os.listdir(videos_train_folder) if
 for i, video_file in enumerate(video_files):
     video_path = os.path.join(videos_train_folder, video_file)
     test_output_folder = os.path.join("data", "test", "A" if i % 2 == 0 else "B")
-    val_output_folder = None
+    val_output_folder = ""  # Provide an empty string instead of None to avoid type errors
     fps_video = helper_.extract_frames(video_path, test_output_folder, val_output_folder, 1, 1)
