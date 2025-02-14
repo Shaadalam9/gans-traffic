@@ -3,8 +3,8 @@ import os
 
 helper_ = process_helper()
 
-videos_train_folder = "video/train"
-videos_test_folder = "video/test"
+videos_train_folder = os.path.join("..", "video", "train")
+videos_test_folder = os.path.join("..", "video", "test")
 
 # Get list of video files in the folder
 video_files = [f for f in os.listdir(videos_train_folder) if
