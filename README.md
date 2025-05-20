@@ -9,7 +9,7 @@ The code is open-source and free to use. It is aimed for, but not limited to, ac
 ## Citation
 If you use the gans-traffic for academic work please cite the following paper:
 
-> Alam, M.S., Martens, M.H., & Bazilinskyy, P. (2025). Generating Realistic Traffic Scenarios: A Deep Learning Approach Using Generative Adversarial Networks (GANs). 13th International Conference on Human Interaction & Emerging Technologies: Artificial Intelligence & Future Applications (IHIET-AI). Malaga, Spain.
+> Alam, M., Martens, M., Bazilinskyy, P.  (2025). Generating Realistic Traffic Scenarios: A Deep Learning Approach Using Generative Adversarial Networks (GANs). In: Tareq Ahram, Antonio Lopez Arquillos, Juan Gandarias and Adrian Morales Casas (eds) Human Interaction and Emerging Technologies (IHIET-AI 2025): Artificial Intelligence and Future Applications. AHFE (2025) International Conference. AHFE Open Access, vol -3. AHFE International, USA. http://doi.org/10.54941/ahfe1005927
 
 ## Getting Started
 Tested with Python 3.9.21. To setup the environment run these two commands in a parent folder of the downloaded repository (replace `/` with `\` and possibly add `--user` if on Windows:
